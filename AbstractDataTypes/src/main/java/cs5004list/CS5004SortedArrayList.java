@@ -11,7 +11,25 @@ public class CS5004SortedArrayList<T extends Comparable<T>> implements CS5004Sor
     }
 
     public void insert(T element) {
-        // TODO
+
+        if (size == elements.length) {
+            // TODO
+            // RESIZE!
+            return;
+        }
+        int current = size;
+
+        elements[size] = element;
+
+        while(current > 0 &&
+                elements[current].compareTo(elements[current-1]) < 0) {
+            T temp = elements[current];
+            elements[current] = elements[current-1];
+            elements[current-1] = temp;
+            current--;
+        }
+        size++;
+
     }
 
     public String toString() {
