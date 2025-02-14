@@ -32,6 +32,10 @@ public class CS5004SortedArrayList<T extends Comparable<T>> implements CS5004Sor
 
     }
 
+    public int size() {
+        return size;
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < size; i++) {

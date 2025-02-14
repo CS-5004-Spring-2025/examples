@@ -10,6 +10,11 @@ public class Widget {
         this.word = word;
     }
 
+    public Widget(Widget other) {
+        this.number = other.getNumber();
+        this.word = other.getWord();
+    }
+
     public int getNumber() {
         return number;
     }

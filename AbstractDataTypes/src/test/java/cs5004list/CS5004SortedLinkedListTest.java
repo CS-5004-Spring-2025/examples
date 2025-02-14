@@ -7,14 +7,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CS5004SortedLinkedListTest {
 
     @Test
-    public void testInsertArrayList() {
+    public void testInsertLinkedList() {
         CS5004SortedList<Integer> list = new CS5004SortedLinkedList<>();
         list.insert(1);
         assertEquals("1", list.toString().trim());
     }
 
     @Test
-    public void testInsertBeforeArrayList() {
+    public void testInsertLinkedListReverseInsert() {
+        CS5004SortedList<Integer> list = new CS5004SortedLinkedList<>();
+        list.insert(5);
+        list.insert(4);
+        list.insert(3);
+        list.insert(2);
+        list.insert(1);
+        assertEquals("1 2 3 4 5", list.toString().trim());
+    }
+
+
+
+    @Test
+    public void testInsertBeforeLinkedList() {
         CS5004SortedList<Integer> list = new CS5004SortedLinkedList<>();
         list.insert(3);
         list.insert(1);
@@ -23,7 +36,7 @@ public class CS5004SortedLinkedListTest {
     }
 
     @Test
-    public void testInsertAfterArrayList() {
+    public void testInsertAfterLinkedList() {
         CS5004SortedList<Integer> list = new CS5004SortedLinkedList<>();
         list.insert(1);
         list.insert(3);
@@ -32,7 +45,7 @@ public class CS5004SortedLinkedListTest {
     }
 
     @Test
-    public void testInsertDuplicateArrayList() {
+    public void testInsertDuplicateLinkedList() {
         CS5004SortedList<Integer> list = new CS5004SortedLinkedList<>();
         list.insert(1);
         list.insert(2);
@@ -43,7 +56,7 @@ public class CS5004SortedLinkedListTest {
     }
 
     @Test
-    public void testInsertBetweenArrayList() {
+    public void testInsertBetweenLinkedList() {
         CS5004SortedList<Integer> list = new CS5004SortedLinkedList<>();
         list.insert(1);
         list.insert(3);
@@ -53,7 +66,7 @@ public class CS5004SortedLinkedListTest {
     }
 
     @Test
-    public void testInsertManyArrayList() {
+    public void testInsertManyLinkedList() {
         CS5004SortedList<Integer> list = new CS5004SortedLinkedList<>();
         list.insert(1);
         list.insert(3);
@@ -64,6 +77,28 @@ public class CS5004SortedLinkedListTest {
         list.insert(13);
         list.insert(1);
         assertEquals("1 1 2 3 3 12 13 13", list.toString().trim());
+
+    }
+
+    @Test
+    public void testCount() {
+        CS5004SortedList<Integer> list = new CS5004SortedLinkedList<>();
+        list.insert(1);
+        list.insert(3);
+        list.insert(2);
+        list.insert(12);
+        list.insert(13);
+        list.insert(3);
+        list.insert(13);
+        list.insert(1);
+        assertEquals(8, ((CS5004SortedLinkedList)list).size());
+
+    }
+
+    @Test
+    public void testCountEmpty() {
+        CS5004SortedList<Integer> list = new CS5004SortedLinkedList<>();
+        assertEquals(0, ((CS5004SortedLinkedList)list).size());
 
     }
 
