@@ -1,0 +1,61 @@
+package jsondemo;
+
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import jsondemo.data.Book;
+import jsondemo.data.Task;
+
+public class JsonParseDemo {
+
+    public static void readWriteBook() {
+        // The ObjectMapper helps with reading/writing JSON.
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            // Book is a plain old java object (POJO).
+            // mapper will create an instance of book from a json file.
+            Book book = mapper.readValue(new File("resources/book.json"), Book.class);
+
+            System.out.println(book.toString());
+            book.setAuthor("Octavia E. Butler");
+
+            // Now, save the new version to a file using the mapper.
+            mapper.writeValue(new File("resources/book.out.json"), book);
+        } catch(IOException ioe) {
+            System.out.println(ioe.getMessage());
+        }
+    }
+
+    public static void parseTaskListWithLocalDate() {
+        List<Task> tasks = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            JsonNode node = objectMapper.readTree(new File("resources/tasks.json"));
+            for (JsonNode task : node.get("tasks")) {
+                Task t = new Task(
+                        task.get("description").asText(),
+                        LocalDate.parse(task.get("deadline").asText()));
+                tasks.add(t);
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        for (Task task : tasks) {
+            System.out.println(task);
+        }
+    }
+
+    public static void main(String[] args) {
+//        readWriteBook();
+        parseTaskListWithLocalDate();
+    }
+
+
+}

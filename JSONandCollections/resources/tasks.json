@@ -1,0 +1,12 @@
+{
+  "tasks": [
+    {
+      "description": "Complete Project 2",
+      "deadline": "2025-02-04"
+    },
+    {
+      "description": "Slides for Linked Lists",
+      "deadline": "2025-02-01"
+    }
+  ]
+}
