@@ -37,11 +37,11 @@ public class JsonParseDemo {
         List<Task> tasks = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            JsonNode node = objectMapper.readTree(new File("resources/tasks.json"));
-            for (JsonNode task : node.get("tasks")) {
+            JsonNode root = objectMapper.readTree(new File("resources/tasks.json"));
+            for (JsonNode taskNode : root.get("tasks")) {
                 Task t = new Task(
-                        task.get("description").asText(),
-                        LocalDate.parse(task.get("deadline").asText()));
+                        taskNode.get("description").asText(),
+                        LocalDate.parse(taskNode.get("deadline").asText()));
                 tasks.add(t);
             }
         } catch (IOException e) {
