@@ -1,5 +1,32 @@
 Controller
 
+Design 1:
+- gameLoop
+
+Design 2:
+- gameStart
+  - clear board
+- takeTurns
+  - switch between x and o
+- updateBoard
+  - deliver updates to the model
+
+View
+
+Design 1:
+- displayBoard ([][] )
+- getNextPlay
+- displayError
+- announceWinner(Player)
+
+Design 2:
+
+- displayBoard
+- getNextPlay
+- showMessage(String)
+
+
+Controller
 Execute main game logic
 2. get info from the user
 2. interact with model
@@ -14,7 +41,6 @@ View
 2. Announce result
 3. Message to ask for user input
 4. Output error message
-
 
 Model
 1. Place a mark

@@ -1,11 +1,7 @@
 package library;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.*;
 
 /**
  * A class to store our full library.
@@ -30,14 +26,6 @@ public class Library {
      */
     public void addItem(LibraryItem item) {
         items.add(item);
-    }
-
-    public int size() {
-        return this.items.size();
-    }
-
-    public LibraryItem getItem(int index) {
-        return this.items.get(index);
     }
 
     /**
@@ -234,7 +222,6 @@ return result;
         }
         return result.toString();
     }
-
 
     public static void main(String[] args) {
 

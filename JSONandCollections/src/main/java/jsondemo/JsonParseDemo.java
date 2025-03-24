@@ -33,28 +33,28 @@ public class JsonParseDemo {
         }
     }
 
-    public static void parseTaskListWithLocalDate() {
-        List<Task> tasks = new ArrayList<>();
+    public static void parseTaskList() {
+        List<Task> listoftasks = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            JsonNode root = objectMapper.readTree(new File("resources/tasks.json"));
-            for (JsonNode taskNode : root.get("tasks")) {
+            JsonNode root = objectMapper.readTree(new File("resources/listoftasks.json"));
+            for (JsonNode taskNode : root.get("listoftasks")) {
                 Task t = new Task(
                         taskNode.get("description").asText(),
                         LocalDate.parse(taskNode.get("deadline").asText()));
-                tasks.add(t);
+                listoftasks.add(t);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        for (Task task : tasks) {
+        for (Task task : listoftasks) {
             System.out.println(task);
         }
     }
 
     public static void main(String[] args) {
 //        readWriteBook();
-        parseTaskListWithLocalDate();
+        parseTaskList();
     }
 
 
